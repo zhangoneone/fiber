@@ -1,0 +1,29 @@
+﻿生成启动时间为 2018/5/18 15:01:48。
+     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”在节点 2 上(build 个目标)。
+       项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
+     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3) (GetTargetPath 个目标)。
+       项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
+     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetTargetPath 个目标)的操作。
+     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:2) (GetNativeManifest 个目标)。
+       项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
+     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetNativeManifest 个目标)的操作。
+     1>InitializeBuildStatus:
+         正在创建“Release\Middleware.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+         所有输出均为最新。
+     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:3) (GetResolvedLinkLibs 个目标)。
+       项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
+     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetResolvedLinkLibs 个目标)的操作。
+     1>Link:
+         所有输出均为最新。
+         Middleware.vcxproj -> C:\Users\青\Desktop\fiber\Release\Middleware.dll
+       FinalizeBuildStatus:
+         正在删除文件“Release\Middleware.unsuccessfulbuild”。
+         正在对“Release\Middleware.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.06

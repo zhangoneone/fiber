@@ -1,0 +1,40 @@
+﻿生成启动时间为 2018/5/18 12:33:16。
+     1>项目“C:\Users\青\Desktop\fiber\PCIECollection\PCIECollection.vcxproj”在节点 2 上(build 个目标)。
+       项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
+     1>InitializeBuildStatus:
+         正在创建“Debug\PCIECollection.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D PCIECOLLECTION_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\PCIECollection.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PCIECollection.cpp
+         PCIECollection.cpp
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.h(52): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame”的左侧
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.h(53): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Point”的左侧
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.h(68): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame_Pool”的左侧
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.h(78): warning C4244: “=”: 从“double”转换到“LONGLONG”，可能丢失数据
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(178): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(197): warning C4154: 删除数组表达式；转换到提供的指针
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(323): warning C4102: “debug”: 未引用的标签
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(329): warning C4101: “ret”: 未引用的局部变量
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(345): warning C4244: “参数”: 从“double”转换到“DWORD”，可能丢失数据
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(352): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(379): warning C4102: “err”: 未引用的标签
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(406): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(461): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(472): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\青\desktop\fiber\pciecollection\pciecollection.cpp(479): warning C4102: “CallReturn”: 未引用的标签
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\青\Desktop\fiber\Debug\PCIECollection.dll" /INCREMENTAL /NOLOGO "WD-Dask.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\PCIECollection.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\青\Desktop\fiber\Debug\PCIECollection.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\青\Desktop\fiber\Debug\PCIECollection.lib" /MACHINE:X86 /DLL Debug\dllmain.obj
+         Debug\PCIECollection.obj
+         Debug\stdafx.obj
+         PCIECollection.vcxproj -> C:\Users\青\Desktop\fiber\Debug\PCIECollection.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"C:\Users\青\Desktop\fiber\Debug\PCIECollection.dll.manifest" /manifest Debug\PCIECollection.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Debug\PCIECollection.unsuccessfulbuild”。
+         正在对“Debug\PCIECollection.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\青\Desktop\fiber\PCIECollection\PCIECollection.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.84
