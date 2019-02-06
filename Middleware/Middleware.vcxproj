@@ -41,12 +41,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\青\Desktop\fiber\PCIECollection;C:\Users\青\Desktop\fiber\WarningAlgorithm;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Administrator\Desktop\Fiberoptic-master\fiber\Debug;..\fiber\Debug;C:\Users\Administrator\Desktop\fiber\Debug;C:\Users\青\Desktop\fiber\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\青\Desktop\fiber\PCIECollection;C:\Users\青\Desktop\fiber\WarningAlgorithm;C:\Users\青\Documents\GitHub\fiber\PCIECollection;C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Administrator\Desktop\Fiberoptic-master\fiber\Debug;..\fiber\Debug;C:\Users\Administrator\Desktop\fiber\Debug;C:\Users\青\Desktop\fiber\Debug;C:\Users\青\Documents\GitHub\fiber\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Administrator\Desktop\fiber\PCIECollection;C:\Users\Administrator\Desktop\fiber\WarningAlgorithm;C:\Users\青\Desktop\fiber\PCIECollection;C:\Users\青\Desktop\fiber\WarningAlgorithm;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Administrator\Desktop\fiber\PCIECollection;C:\Users\Administrator\Desktop\fiber\WarningAlgorithm;C:\Users\青\Desktop\fiber\PCIECollection;C:\Users\青\Desktop\fiber\WarningAlgorithm;C:\Users\青\Documents\GitHub\fiber\PCIECollection;C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Administrator\Desktop\fiber\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -66,7 +66,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;MIDDLEWARE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

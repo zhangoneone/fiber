@@ -68,13 +68,13 @@ void aligned_free(void* aligned)
         void* raw = *(void**) ((uintptr_t) aligned - sizeof (void*));  
         free(raw);  
  }  
-bool isAligned(void* data, int alignment)  
+bool isAligned(void* data, int alignment)   
 {  
         // 又是一个经典算法, 参见<Hacker's Delight>  
 	return ((uintptr_t) data & (alignment - 1)) == 0;  
 }  
 void DataCollection::block_write_lock(int seq)
-{
+ {
 repeat:
 	int i = 0;
 	while(i< fp->ref_thread)
@@ -129,12 +129,11 @@ DataCollection::DataCollection()
 	//采集卡参数初始化
 	card_num = 0;
 	stopped=0;
-	buffernum = 4000;
+	buffernum = 5000;
 	samptvl = scantlv = 20;
 
 	//保密放大参数初始化
 	K1 = 1;
-	//K2 = 0.000045;
 	K2 = 0.000015;
 	handlebug=1;
 	d = (scantlv / 2);
@@ -143,7 +142,7 @@ DataCollection::DataCollection()
 	fp->buffer_Current_Num = 0;
 	fp->ref_thread=0;
 	fp->Current_User=new user_manage[Max_Thread];
-		for(int i=0;i<Max_Thread;i++)
+	for(int i=0;i<Max_Thread;i++)
 	{
 		fp->Current_User[i].thread_num=-1;
 		fp->Current_User[i].user=0;
@@ -251,7 +250,7 @@ int DataCollection::base_config()
 			//参数3 是否激活 ad duty循环恢复
 			//参数4 ad转换源的选择
 			//参数5 是否开启ad ping pong模式
-			//参数6 模拟输入完成后，是否重置模拟ai的缓存
+			//参数6 模拟输入完成后，是否重置模  拟ai的缓存
 	ret = WD_AI_Config(m_dev,WD_IntTimeBase, true,WD_AI_ADCONVSRC_TimePacer, false, true);
 	if(ret < 0)
 	{
@@ -340,25 +339,24 @@ int DataCollection::CollectionData_debug(DataCollection *dc)//完成从采集卡采集数
 {
     int ret = 0;
 	srand((unsigned)time(NULL));
+	static int jishu=0;
 	do
 	{
 		Sleep(0.8);
 		timer->timer_start();
-		static int jishu=1;
 		//查询user,阻塞写
 		block_write_lock(dc->fp->buffer_Current_Num);
 		//强制写
 		//force_write(dc->fp->buffer_Current_Num);
 		for(int i=0;i<dc->buffernum;i++)
 		{
-			dc->fp->frame[dc->fp->buffer_Current_Num].buffer_load[i] = random(2900,3000);
+			dc->fp->frame[dc->fp->buffer_Current_Num].buffer_load[i] = random(2900,3000);//jishu++;//
 		}
-		jishu++;
 		//更改帧user
 		for(int i=0;i<dc->fp->ref_thread;i++)
 		{
 			dc->fp->frame[dc->fp->buffer_Current_Num].user[i].thread_num = dc->fp->Current_User[i].thread_num;
-			dc->fp->frame[dc->fp->buffer_Current_Num].user[i].user = dc->fp->Current_User[i].user;//
+			dc->fp->frame[dc->fp->buffer_Current_Num].user[i].user = dc->fp->Current_User[i].user;
 		}
 		//解决第一帧的bug
 		for(int i=0;i<dc->fp->ref_thread;i++)
@@ -453,7 +451,7 @@ err:
 	return ret;
 }
 //此函数由上层调用，从缓冲池读取数据，装帧、并向上层传递数据
-int DataCollection::emit(Frame *frame,callback cb,int thread_location)
+int DataCollection::emit(Frame *frame,callback cb,int thread_location,int ExpandOrNot)
 {
 	block_read_lock(frame->Seq,thread_location);
 	block_read_lock((frame->Seq+1)%Max_Num,thread_location);
@@ -461,17 +459,23 @@ int DataCollection::emit(Frame *frame,callback cb,int thread_location)
 	for(int i =0 ;i<buffernum;i++)
 	{
 		frame->buffer_load[i] = fp->frame[(frame->Seq+1)%Max_Num].buffer_load[i] - fp->frame[frame->Seq].buffer_load[i];
+		if(frame->buffer_load[i]==-3270000)
+		{printf("此处i是%d\n序号是%d值是%d\n",i,frame->Seq,fp->frame[(frame->Seq+1)%Max_Num].buffer_load[i]);}
+		else{}
 	}
 	//填充耗时
 	frame->time_cost = fp->frame[frame->Seq].time_cost;
 	//user自减
 	fp->frame[(frame->Seq+1)%Max_Num].user[thread_location].user--;
 	fp->frame[frame->Seq].user[thread_location].user--;
-	//帧做放大,再发送
 	//timer->timer_start();
-	for(int i =0 ;i<buffernum;i++)
+	//放大判断,再发送
+	if(ExpandOrNot==1)
 	{
-		frame->buffer_load[i] = ( frame->buffer_load[i]*K1) * std::pow(10,(i+1)*K2*d );
+		for(int i =0 ;i<buffernum;i++)
+		{
+			frame->buffer_load[i] = ( frame->buffer_load[i]*K1) * std::pow(10,(i+1)*K2*d );
+		}
 	}
 	//timer->timer_end();
 	//double time = timer->timer_ms();

@@ -132,7 +132,7 @@ public:
 	int start_collection(DataCollection *dc);//创建采集线程
 	int CollectionData(DataCollection *dc);//调用windows api的多线程函数
 	int CollectionData_debug(DataCollection *dc);//调试函数
-	int emit(Frame *frame,callback cb,int thread_location);//装帧、上传数据的线程函数
+	int emit(Frame *frame,callback cb,int thread_location,int ExpandOrNot);//装帧、上传数据的线程函数
 	int Register_function(DataCollection &dc);
 	int Logout_function(DataCollection &dc);
 	int Set_function(DataCollection &dc);

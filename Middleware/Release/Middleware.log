@@ -1,29 +1,47 @@
-﻿生成启动时间为 2018/5/18 15:01:48。
-     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2019/1/10 13:46:47。
+     1>项目“C:\Users\青\Documents\GitHub\fiber\Middleware\Middleware.vcxproj”在节点 2 上(build 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
-     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3) (GetTargetPath 个目标)。
+     1>项目“C:\Users\青\Documents\GitHub\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3) (GetTargetPath 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
-     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetTargetPath 个目标)的操作。
-     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:2) (GetNativeManifest 个目标)。
+     3>已完成生成项目“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetTargetPath 个目标)的操作。
+     1>项目“C:\Users\青\Documents\GitHub\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:2) (GetNativeManifest 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
-     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetNativeManifest 个目标)的操作。
+     3>已完成生成项目“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetNativeManifest 个目标)的操作。
      1>InitializeBuildStatus:
          正在创建“Release\Middleware.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          所有输出均为最新。
          所有输出均为最新。
-         所有输出均为最新。
-     1>项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:3) (GetResolvedLinkLibs 个目标)。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Ot /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MIDDLEWARE_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Middleware.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Middleware.cpp
+         Middleware.cpp
+     1>C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.h(52): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame”的左侧
+     1>C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.h(53): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Point”的左侧
+     1>C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.h(68): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame_Pool”的左侧
+     1>C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.h(78): warning C4244: “=”: 从“double”转换到“LONGLONG”，可能丢失数据
+     1>Middleware.cpp(108): warning C4244: “=”: 从“double”转换到“U32”，可能丢失数据
+     1>Middleware.cpp(121): warning C4244: “=”: 从“double”转换到“U32”，可能丢失数据
+     1>Middleware.cpp(152): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+     1>Middleware.cpp(153): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+     1>项目“C:\Users\青\Documents\GitHub\fiber\Middleware\Middleware.vcxproj”(1)正在节点 2 上生成“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(3:3) (GetResolvedLinkLibs 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
-     3>已完成生成项目“C:\Users\青\Desktop\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetResolvedLinkLibs 个目标)的操作。
+     3>已完成生成项目“C:\Users\青\Documents\GitHub\fiber\WarningAlgorithm\WarningAlgorithm.vcxproj”(GetResolvedLinkLibs 个目标)的操作。
      1>Link:
-         所有输出均为最新。
-         Middleware.vcxproj -> C:\Users\青\Desktop\fiber\Release\Middleware.dll
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\青\Documents\GitHub\fiber\Release\Middleware.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Middleware.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\青\Documents\GitHub\fiber\Release\Middleware.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\青\Documents\GitHub\fiber\Release\Middleware.lib" /MACHINE:X86 /DLL Release\dllmain.obj
+         Release\Middleware.obj
+         Release\stdafx.obj
+         "C:\Users\青\Documents\GitHub\fiber\Debug\PCIECollection.lib"
+         "C:\Users\青\Documents\GitHub\fiber\Release\WarningAlgorithm.lib"
+            正在创建库 C:\Users\青\Documents\GitHub\fiber\Release\Middleware.lib 和对象 C:\Users\青\Documents\GitHub\fiber\Release\Middleware.exp
+         正在生成代码
+         已完成代码的生成
+         Middleware.vcxproj -> C:\Users\青\Documents\GitHub\fiber\Release\Middleware.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\青\Documents\GitHub\fiber\Release\Middleware.dll;#2" /manifest Release\Middleware.dll.intermediate.manifest
        FinalizeBuildStatus:
          正在删除文件“Release\Middleware.unsuccessfulbuild”。
          正在对“Release\Middleware.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\青\Desktop\fiber\Middleware\Middleware.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\青\Documents\GitHub\fiber\Middleware\Middleware.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:00.06
+已用时间 00:00:01.79

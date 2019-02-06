@@ -24,7 +24,8 @@ DWORD WINAPI Fun_GetBufferData(LPVOID lpParamter)//执行取数据操作
 	wa = wa->GetSingleton();
 	wa->dc=wa->dc->GetSingleton();
 	//获取被取缓冲池当前数据指针
-	wa->frame->Seq =0;//wa->dc->fp->buffer_Current_Num;
+	wa->frame->Seq =0;
+	//wa->frame->Seq = wa->dc->fp->buffer_Current_Num;
 	while(wa->wThread_stop==1)
 	{
 		wa->GetData();
@@ -118,6 +119,18 @@ int CWarningAlgorithm::remove_user(int thread_num,int user_num)
 	fp->ref_thread--;
 	return 0;
 }
+
+int CWarningAlgorithm::set_expand(int param)
+{
+	ExpandOrNot=param;
+	return 0;
+}
+int CWarningAlgorithm::set_warning(int param)
+{
+	WarningOrNot=param;
+	return 0;
+}
+
 // 这是已导出类的构造函数。
 // 有关类定义的信息，请参阅 WarningAlgorithm.h
 CWarningAlgorithm::CWarningAlgorithm()
@@ -132,7 +145,17 @@ CWarningAlgorithm::CWarningAlgorithm()
 	setthreshold=60;//异常的阈值
 	setexcepRate=0.5;//预报警的异常阈值
 	setackRate=0.2;//报警的预报警阈值
-
+	zp=new ZoomParam[Max_Zoom];//设置Max_Zoom组区域，足够了
+	for(int i=0;i<Max_Zoom;i++)
+	{
+		zp[i].AckRate=1.1;//这里超过1，未设置的区域，不会报警
+		zp[i].ExpRate=1.1;
+		zp[i].Threshold=5000;
+		zp[i].ZoomNum=-1;
+		zp[i].ZoomStartLoc=-1;
+		zp[i].ZoomEndLoc=-1;
+	}
+	Zoom_Length=0;
 	wThread_Num=0;
 	hThread_Num=1;
 
@@ -148,6 +171,12 @@ CWarningAlgorithm::CWarningAlgorithm()
 		fp->Current_User[i].thread_num=-1;
 		fp->Current_User[i].user=0;
 	}
+
+	//放大开关
+	ExpandOrNot=0;
+	//报警开关
+	WarningOrNot=0;
+
 	//申请帧内存
 	for(int i=0;i<Max_Num;i++)
 	{
@@ -209,7 +238,29 @@ void CWarningAlgorithm::GetData()
 {
 	//获取类指针
 	dc = dc->GetSingleton();
-	dc->emit(frame,cb,wThred_location);//传入回调,引用全局唯一的dc
+	dc->emit(frame,cb,wThred_location,ExpandOrNot);//传入回调,引用全局唯一的dc
+}
+
+/*********
+返回location处的区域参数
+找不到则默认返回null
+*********/
+
+inline ZoomParam * GetZoomPam(int location,ZoomParam *zp)
+{
+	int i=0;
+	CWarningAlgorithm *cm=cm->GetSingleton();
+	while(i<cm->Zoom_Length)
+	{
+		if(location>=zp[i].ZoomStartLoc &&
+			location<=zp[i].ZoomEndLoc)
+		{
+			return (&zp[i]);
+		}
+		else
+			i++;
+	}
+	return NULL;
 }
 volatile void CWarningAlgorithm::HandleData()//处理数据
 {
@@ -246,6 +297,7 @@ while(hThread_stop==1)
 		if (tmp_frame->time_cost>1)
 		{
 			pointinfo[0].loseFrame++;
+			pointinfo[0].loseFrameRate=pointinfo[0].loseFrame/(pointinfo->frame_Num+0.1-0.1);
 			pointinfo[0].loseFrame%=4294967295;
 		}
 		//统计异常
@@ -257,7 +309,10 @@ while(hThread_stop==1)
 				pointinfo[i].MaxValue= tmp_frame->buffer_load[i];
 			}
 			//判断阈值
-			if(tmp_frame->buffer_load[i] >= setthreshold||tmp_frame->buffer_load[i]<=(-setthreshold))
+			ZoomParam *tmpzp = GetZoomPam(i,wa->zp);
+			if(tmpzp==NULL)//该点不必执行算法
+				continue;
+			if(tmp_frame->buffer_load[i] >= tmpzp->Threshold||tmp_frame->buffer_load[i]<=(-tmpzp->Threshold))
 			{
 				pointinfo[i].excep++;
 			}
@@ -277,8 +332,14 @@ readblock:
 	  {
 		  //计算异常率
 		  pointinfo[i].excepRate= pointinfo[i].excep / ( pointinfo[i].excep + pointinfo[i].nexcep+0.1-0.1 );
+		  //异常次数不需要了，清0
+		  pointinfo[i].excep=0;
+		  pointinfo[i].nexcep=0;
 		 //根据异常率，统计预报警确认次数
-		 if(pointinfo[i].excepRate >= setexcepRate)
+		  ZoomParam *tmpzp = GetZoomPam(i,wa->zp);
+		  if(tmpzp==NULL)//该点不必执行算法
+				continue;
+		  if(pointinfo[i].excepRate >= tmpzp->ExpRate)
 		 {
 			pointinfo[i].ack++;
 		 }
@@ -294,18 +355,34 @@ readblock:
 		{
 			//计算预报警率
 			pointinfo[i].ackRate = pointinfo[i].ack / (pointinfo[i].ack + pointinfo[i].nack+0.1-0.1);
+			//预报警次数不需要了，清0
+			pointinfo[i].ack=0;
+			pointinfo[i].nack=0;
 			//决定是否报警
-			if(pointinfo[i].ackRate >= setackRate)
+			ZoomParam *tmpzp = GetZoomPam(i,wa->zp);
+			if(tmpzp==NULL)//该点不必执行算法
+				continue;
+			if(pointinfo[i].ackRate >= tmpzp->AckRate)
 			{
 				//生成报警信息
 				pointinfo[i].pointNum = i;
 				pointinfo[i].warning = 1;
 				pointinfo->loseFrameRate = pointinfo[0].loseFrameRate;
 				//值传递到消息队列
-				wa->wq->Add(pointinfo[i]);
+				if(WarningOrNot==1)//报警打开了，否则报警信息压下，不上报
+				{
+
+					wa->wq->Add(pointinfo[i]);
+				}
+				//报警位不需要了，清0
+				pointinfo[i].warning = 0;
+				//最大值不需要了，清0
+				pointinfo[i].MaxValue=0;
 			}
 			else
 				pointinfo[i].warning = 0;
+				//最大值不需要了，清0
+				pointinfo[i].MaxValue=0;
 		}
 }
 }
@@ -349,7 +426,7 @@ int WarnMessageQue::Full()
 int WarnMessageQue::CleanQue()
 {
 	que->Rpt=que->Wpt=0;
-	memset(que,0,sizeof(Queue)*que->Que_Max);
+	//memset(que,0,sizeof(Queue)*que->Que_Max);
 	return 0;
 }
 

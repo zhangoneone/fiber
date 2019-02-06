@@ -6,7 +6,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 namespace FiberopticServer
 {
-    static class importdll
+    public static class importdll
     {
          enum Class_Code{
 	    Start=0x00,
@@ -44,11 +44,17 @@ namespace FiberopticServer
         public Int16 command_code;
         public double data_code;   //可选的附加数据
         };//命令码
+        public struct user_manage
+        {
+            public int thread_num;
+            public int user;
+        }
         public struct Frame{
             public Int32 Seq;//帧序号
             public double time_cost;//采集此帧耗费时间，单位ms
             public IntPtr ptr;
             public double[] buffer;
+            public user_manage[] user;
          };//帧
         public struct Point{
             public Int32 StartSeq;//帧起始序号
@@ -71,6 +77,17 @@ namespace FiberopticServer
             public	double warningAckRate;//报警确认比
             public  double loseFramRate;//丢帧率
         };
+        public struct ZoomInfo
+        {
+            public int ZoomNum;
+            public string ZoomName;
+            public double ZoomStartLoc;
+            public double ZoomEndLoc;
+            public double Threshold;
+            public double ExpRate;
+            public double AckRate;
+            public int count;
+        };
         [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Command_function(ref Command c);
         [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -79,5 +96,11 @@ namespace FiberopticServer
         public static extern int Point_function(IntPtr ptr);
         [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Warning_function(ref WarningInfo w);
+        [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int ZoomSet_function(IntPtr ptr,int count);
+        [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int ZoomClear_function();
+        [DllImport("Middleware.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int WarningClear_function();
     }
 }

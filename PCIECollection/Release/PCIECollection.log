@@ -1,20 +1,42 @@
-﻿生成启动时间为 2018/5/18 15:01:48。
-     1>项目“C:\Users\青\Desktop\fiber\PCIECollection\PCIECollection.vcxproj”在节点 2 上(build 个目标)。
+﻿生成启动时间为 2019/1/8 21:58:52。
+     1>项目“C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.vcxproj”在节点 2 上(build 个目标)。
        项目文件包含 ToolsVersion="12.0"。此工具集可能未知或缺失。在这种情况下，通过安装 MSBuild 的正确版本，或许可以解决此问题。否则，该 build 可能已因策略原因而被强制为某个特定 ToolsVersion。将该项目视为其已具有 ToolsVersion="4.0"。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=291333。
      1>InitializeBuildStatus:
          正在创建“Release\PCIECollection.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          所有输出均为最新。
          所有输出均为最新。
-         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Ot /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D PCIECOLLECTION_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\PCIECollection.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PCIECollection.cpp
+         PCIECollection.cpp
+     1>c:\users\青\documents\github\fiber\pciecollection\PCIECollection.h(52): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame”的左侧
+     1>c:\users\青\documents\github\fiber\pciecollection\PCIECollection.h(53): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Point”的左侧
+     1>c:\users\青\documents\github\fiber\pciecollection\PCIECollection.h(68): warning C4091: “__declspec(dllexport)”: 没有声明变量时忽略“Frame_Pool”的左侧
+     1>c:\users\青\documents\github\fiber\pciecollection\PCIECollection.h(78): warning C4244: “=”: 从“double”转换到“LONGLONG”，可能丢失数据
+     1>PCIECollection.cpp(177): warning C4018: “<”: 有符号/无符号不匹配
+     1>PCIECollection.cpp(196): warning C4154: 删除数组表达式；转换到提供的指针
+     1>PCIECollection.cpp(328): warning C4101: “ret”: 未引用的局部变量
+     1>PCIECollection.cpp(345): warning C4244: “参数”: 从“double”转换到“DWORD”，可能丢失数据
+     1>PCIECollection.cpp(351): warning C4018: “<”: 有符号/无符号不匹配
+     1>PCIECollection.cpp(377): warning C4102: “err”: 未引用的标签
+     1>PCIECollection.cpp(404): warning C4018: “<”: 有符号/无符号不匹配
+     1>PCIECollection.cpp(459): warning C4018: “<”: 有符号/无符号不匹配
+     1>PCIECollection.cpp(475): warning C4018: “<”: 有符号/无符号不匹配
+     1>PCIECollection.cpp(483): warning C4102: “CallReturn”: 未引用的标签
        Link:
-         所有输出均为最新。
-         PCIECollection.vcxproj -> C:\Users\青\Desktop\fiber\Release\PCIECollection.dll
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.dll" /INCREMENTAL:NO /NOLOGO "WD-Dask.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\PCIECollection.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.lib" /MACHINE:X86 /DLL Release\dllmain.obj
+         Release\PCIECollection.obj
+         Release\stdafx.obj
+            正在创建库 C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.lib 和对象 C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.exp
+         正在生成代码
+         已完成代码的生成
+         PCIECollection.vcxproj -> C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\青\Documents\GitHub\fiber\Release\PCIECollection.dll;#2" /manifest Release\PCIECollection.dll.intermediate.manifest
        FinalizeBuildStatus:
          正在删除文件“Release\PCIECollection.unsuccessfulbuild”。
          正在对“Release\PCIECollection.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Users\青\Desktop\fiber\PCIECollection\PCIECollection.vcxproj”(build 个目标)的操作。
+     1>已完成生成项目“C:\Users\青\Documents\GitHub\fiber\PCIECollection\PCIECollection.vcxproj”(build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:00.04
+已用时间 00:00:01.38

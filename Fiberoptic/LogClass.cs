@@ -60,7 +60,7 @@ namespace FiberopticServer.common
          /// 写入日志文件
          /// </summary>
          /// <param name="input"></param>
-         private static void WriteLogFile(string input,string fname)
+         public static void WriteLogFile(string input,string fname)
         {
            
             /**/
@@ -163,6 +163,20 @@ namespace FiberopticServer.common
                  w.Close();
              }
 
+         }
+
+         public static void scatterWrite(string filename, byte[] data)
+         {
+             //   FileStream.Write
+             string filePath = Directory.GetCurrentDirectory() + filename + ".txt";
+             if (File.Exists(filePath))
+                 File.Delete(filePath);
+             FileStream fs = new FileStream(filePath, FileMode.Create);
+             //开始写入
+             fs.Write(data, 0, data.Length);
+             //清空缓冲区、关闭流
+             fs.Flush();
+             fs.Close();
          }
     }
 }

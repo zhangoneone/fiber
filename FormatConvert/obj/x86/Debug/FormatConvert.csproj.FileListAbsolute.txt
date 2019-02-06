@@ -1,0 +1,8 @@
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\bin\Debug\FormatConvert.exe
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\bin\Debug\FormatConvert.pdb
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.Form1.resources
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.Properties.Resources.resources
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.csproj.GenerateResource.Cache
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.exe
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.pdb
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Debug\FormatConvert.csprojResolveAssemblyReference.cache

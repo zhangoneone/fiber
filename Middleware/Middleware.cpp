@@ -14,6 +14,45 @@ MIDDLEWARE_API int fnMiddleware(void)
 	return 42;
 }
 
+//清空报警队列
+extern "C" MIDDLEWARE_API int WarningClear_function()
+{
+	CMiddleware *cm=cm->GetSingleton();
+	cm->wa->wq->CleanQue();
+	return 0;
+}
+//设置zoom参数
+extern "C" MIDDLEWARE_API int ZoomClear_function()
+{
+	CMiddleware *cm=cm->GetSingleton();
+	cm->wa->Zoom_Length=0;
+	for(int i=0;i<Max_Zoom;i++)
+	{
+		cm->wa->zp[i].AckRate=1.1;//这里超过1，未设置的区域，不会报警
+		cm->wa->zp[i].ExpRate=1.1;
+		cm->wa->zp[i].Threshold=5000;
+		cm->wa->zp[i].ZoomNum=-1;
+		cm->wa->zp[i].ZoomStartLoc=-1;
+		cm->wa->zp[i].ZoomEndLoc=-1;
+	}
+	return 0;
+}
+
+//设置zoom参数
+extern "C" MIDDLEWARE_API int ZoomSet_function(ZoomParam *zp,int count)
+{
+	CMiddleware *cm=cm->GetSingleton();
+	int i = cm->wa->Zoom_Length++;
+	cm->wa->zp[i].Threshold=zp->Threshold;
+	cm->wa->zp[i].ExpRate=zp->ExpRate;
+	cm->wa->zp[i].AckRate=zp->AckRate;
+	cm->wa->zp[i].ZoomStartLoc=zp->ZoomStartLoc;
+	cm->wa->zp[i].ZoomEndLoc=zp->ZoomEndLoc;
+	cm->wa->zp[i].ZoomNum=zp->ZoomNum;
+	return 0;
+}
+
+
 extern "C" MIDDLEWARE_API int Command_function(Command *c)
 {
 	CMiddleware *cm=cm->GetSingleton();//获取单件
@@ -106,9 +145,12 @@ int CMiddleware::CollectionMode(Command *c)
 int CMiddleware::AmendMode(Command *c)
 {
 	CMiddleware *cm=cm->GetSingleton();//获取单件
+	cm->wa=cm->wa->GetSingleton();
 	switch(c->command_code)
 	{
-	case Exp_Expand:cm->wa->Start_GetAndHandle(); break;//开两个线程get handle数据
+	case Exp_Expand:cm->wa->Start_GetAndHandle();break;//开两个线程get handle数据
+	case Set_Expand_OnOff:cm->wa->set_expand(c->data_code);break;//放大开关
+	case Set_Warning_OnOff:cm->wa->set_warning(c->data_code);break;//报警开关
 	default:
 		break;
 	}
@@ -158,31 +200,30 @@ extern "C" MIDDLEWARE_API int Data_function(Frame *d)
 	{
 		cm->singlenter_frame=0;
 		//向被取缓冲池注册user
-		Thread2_location=wa->add_user(Thread_2,One_user);
+		Thread2_location=dc->add_user(Thread_2,One_user);
 		//获取被取缓冲池指针
-		cm->frame_ptr = wa->fp->buffer_Current_Num;
+		cm->frame_ptr = dc->fp->buffer_Current_Num;
 	}
 	//从可用帧开始读
-	while(wa->fp->frame[cm->frame_ptr].user[Thread2_location].user<=Zero_user)
+	while(dc->fp->frame[cm->frame_ptr].user[Thread2_location].user<=Zero_user)
 	{
 		cm->frame_ptr++;
 		cm->frame_ptr%= (Max_Num);
 	}
 
-	d->Seq = wa->fp->frame[cm->frame_ptr].Seq;
-	d->time_cost = wa->fp->frame[cm->frame_ptr].time_cost;
-	std::memcpy(d->buffer_load,wa->fp->frame[cm->frame_ptr].buffer_load,sizeof(double)*dc->buffernum);
-	wa->fp->frame[cm->frame_ptr].user[Thread2_location].user--;
+	d->Seq = dc->fp->frame[cm->frame_ptr].Seq;
+	d->time_cost = dc->fp->frame[cm->frame_ptr].time_cost;
+	std::memcpy(d->buffer_load,dc->fp->frame[cm->frame_ptr].buffer_load,sizeof(double)*dc->buffernum);
+	dc->fp->frame[cm->frame_ptr].user[Thread2_location].user--;
 	cm->frame_ptr++;
 	cm->frame_ptr%= (Max_Num);
 	return 0;
 err:
-	return -1;;
+	return -1;
 }
 extern "C" MIDDLEWARE_API int Warning_function(WarningInfo *w)
 {
 	CMiddleware *cm=cm->GetSingleton();//获取单件
-	cm->dc=cm->dc->GetSingleton();
 	if (cm->wa->wq->Empty())
 		return -1;
 	PointInfo PI = cm->wa->wq->Get();

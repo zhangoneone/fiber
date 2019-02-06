@@ -16,7 +16,7 @@
 
 #define DEBUG 1
 
-#define buffnum 4000
+#define buffnum 5000
 typedef enum{
 	Start=0x00,
 	Config=0x01,
@@ -45,7 +45,9 @@ typedef enum{
 	Set_K2=0x0f,
 	Set_threshold=0x10,
 	Set_excepRate=0x11,
-	Set_ackRate=0x12
+	Set_ackRate=0x12,
+	Set_Expand_OnOff=0x13,
+	Set_Warning_OnOff=0x14
 }Command_Code;
 
 typedef struct{
@@ -97,4 +99,7 @@ extern "C" MIDDLEWARE_API int Command_function(Command *c);
 extern "C" MIDDLEWARE_API int Data_function(Frame *d);
 extern "C" MIDDLEWARE_API int Warning_function(WarningInfo *w);
 extern "C" MIDDLEWARE_API int Point_function(Point *p);
+extern "C" MIDDLEWARE_API int ZoomSet_function(ZoomParam *zp,int count);
+extern "C" MIDDLEWARE_API int ZoomClear_function();
+extern "C" MIDDLEWARE_API int WarningClear_function();
 #endif

@@ -1,0 +1,8 @@
+C:\Users\青\Documents\GitHub\fiber\Fiberoptic\bin\Release\FormatConvert.exe
+C:\Users\青\Documents\GitHub\fiber\Fiberoptic\bin\Release\FormatConvert.pdb
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.Form1.resources
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.Properties.Resources.resources
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.csproj.GenerateResource.Cache
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.exe
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.pdb
+C:\Users\青\Documents\GitHub\fiber\FormatConvert\obj\x86\Release\FormatConvert.csprojResolveAssemblyReference.cache

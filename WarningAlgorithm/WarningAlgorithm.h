@@ -15,9 +15,9 @@
 #endif
 
 #define DEBUG 1
-#define QueLen 4000
+#define QueLen 5000
 #define Max_Num 655
-
+#define Max_Zoom 10
 typedef struct{
 	int pointNum;//点编号
 	double MaxValue;//该点最大值
@@ -26,7 +26,7 @@ typedef struct{
 	double excepRate;//异常率
 	int ack;//报警确认次数
 	int nack;//报警否认次数
-	int ackRate;//报警确认率
+	double ackRate;//报警确认率
 	short warning;//该点是否报警 1 报警 0 不报警
 
 	int frame_Num;//总帧数
@@ -34,6 +34,14 @@ typedef struct{
 	double loseFrameRate;//丢帧率
 }PointInfo;
 
+typedef struct{
+	int ZoomNum;//区域编号
+    double ZoomStartLoc;//起始点
+    double ZoomEndLoc;//结束点
+    double Threshold;//区域阈值
+    double ExpRate;//区 域异常率
+    double AckRate;//区域确认率
+}ZoomParam;//区域参数
 typedef struct
 {
 	int Que_Max;//队列长度
@@ -55,8 +63,7 @@ public:
 	WARNINGALGORITHM_API PointInfo Get();
 	WARNINGALGORITHM_API int Full();
 	WARNINGALGORITHM_API int Empty();
-private:
-	int CleanQue();
+	WARNINGALGORITHM_API int CleanQue();
 };
 // 此类是从 WarningAlgorithm.dll 导出的。去掉了导出标志WARNINGALGORITHM_API
 class CWarningAlgorithm {
@@ -64,14 +71,25 @@ public:
 	WARNINGALGORITHM_API static CWarningAlgorithm * GetSingleton();//获取单例
 	Frame *frame; 
 	Frame_Pool *fp;//帧池
+
+	int ExpandOrNot;//是否放大 1 放大 0 不放大
+	int WarningOrNot;//是否报警处理 1 处理 0 不处理
+
+
 	DataCollection *dc;//PCIE采集类的实例
 	double setthreshold;//异常的阈值
 	double setexcepRate;//预报警的异常阈值
 	double setackRate;//报警的预报警阈值
+
+	ZoomParam *zp;//区域参数
+	int Zoom_Length;//区域数
+
 	WARNINGALGORITHM_API int Start_GetAndHandle();//获取、处理数据
 	WarnMessageQue *wq;//报警消息队列
 	void GetData();//调用者函数
 	volatile void HandleData();//此为处理函数
+	WARNINGALGORITHM_API int set_expand(int param);
+	WARNINGALGORITHM_API int set_warning(int param);
 	WARNINGALGORITHM_API int add_user(int thread_num,int user_num);
 	WARNINGALGORITHM_API int remove_user(int thread_num,int user_num);
 	WARNINGALGORITHM_API void block_write_lock(int seq);

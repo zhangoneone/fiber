@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,6 +77,15 @@
     <Compile Include="importdll.cs" />
     <Compile Include="LogClass.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="login.cs" />
+    <Compile Include="NetConn.cs" />
+    <Compile Include="OrderTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderTime.Designer.cs">
+      <DependentUpon>OrderTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RSAHelper.cs" />
     <Compile Include="ServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +100,23 @@
     <Compile Include="setRealPoint.Designer.cs">
       <DependentUpon>setRealPoint.cs</DependentUpon>
     </Compile>
-    <Compile Include="wd-dask.cs" />
+    <Compile Include="SetZoom1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetZoom1.Designer.cs">
+      <DependentUpon>SetZoom1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SoftCheck.cs" />
+    <Compile Include="softversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="softversion.Designer.cs">
+      <DependentUpon>softversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xmlopera.cs" />
+    <EmbeddedResource Include="OrderTime.resx">
+      <DependentUpon>OrderTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="setRealPoint.resx">
       <DependentUpon>setRealPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetZoom1.resx">
+      <DependentUpon>SetZoom1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="softversion.resx">
+      <DependentUpon>softversion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

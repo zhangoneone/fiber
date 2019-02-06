@@ -15,5 +15,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>C:\Users\青\Documents\GitHub\fiber\Fiberoptic\./;C:\Users\青\Documents\GitHub\fiber\Fiberoptic\.\;C:\Windows\System32\</ReferencePath>
   </PropertyGroup>
 </Project>
